@@ -41,6 +41,7 @@ So that I can view events specific to that city.
 **When** the user selects a city (e.g., “Berlin, Germany”) from the list;  
 **Then** their city should be changed to that city (i.e., “Berlin, Germany”) 
 AND the user should receive a list of upcoming events in that city.
+
 ---
 
 
@@ -79,6 +80,7 @@ So that I can minimize the information when I no longer need it.
 **Given** an event had been expanded  
 **When** user clicks on the event again  
 **Then** user will see the event collapse to hide its details
+
 ---
 
 
@@ -105,6 +107,7 @@ So that I can adjust the list to suit my preferences.
 **Given** user had wanted to see a specific number of events  
 **When** user changes the number of events in the settings  
 **Then** user will see the events list display the specified number of events
+
 ---
 
 
@@ -130,6 +133,7 @@ So that I understand why the app is not updating the events.
 **Given** user had no internet connection  
 **When** user changes search settings like city or number of events  
 **Then** user will see an error message
+
 ---
 
 
@@ -144,6 +148,7 @@ So that I can quickly access the app.
 **Given** user had been using the meet app  
 **When** user chooses the option to install the app as a shortcut  
 **Then** user will see the app added to their device’s home screen
+
 ---
 
 
@@ -158,6 +163,7 @@ So that I can understand event distribution visually.
 **Given** user had been viewing event data  
 **When** user navigates to the charts section  
 **Then** user will see a chart displaying the number of upcoming events in each city
+
 ---
 
 
