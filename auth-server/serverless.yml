@@ -1,0 +1,19 @@
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: eu-central-1
+  timeout: 25 # in seconds, default 6s
+  environment:
+    CLIENT_ID: ${file(config.json):CLIENT_ID}
+    CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
+    CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+  deploymentBucket:
+    name: meet-app-arohandi
+service: auth-server
+functions:
+  getAuthURL:
+    handler: handler.getAuthURL
+    events:
+      - http:
+          path: api/get-auth-url
+          method: get
