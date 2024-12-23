@@ -2,6 +2,9 @@
 
 This is a Meet app.
 
+## Architectural diagram
+![Architectural diagram](architectural-diagram.png)
+
 ## Features
 
 ---
