@@ -44,7 +44,6 @@
   const getAuthUrlButton = document.getElementById("getAuthUrlButton");
   const resultElement = document.getElementById("result");
   const resultLink = document.getElementById("authURL");
-  // Replace this with your own endpoint
   const getAuthURL = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
   getAuthUrlButton.onclick = function () {
@@ -71,12 +70,11 @@
   getAccessToken.onclick = function () {
     let code = codeValue.value;
 
-
     // if the authorization code is not URL-encoded, then URL-encode it.
     if (decodeURIComponent(code) === code) {
       code = encodeURIComponent(codeValue.value);
     }
-    const getTokenRequest = getToken +  "/" + code;
+    const getTokenRequest = getToken + "/" + code;
     fetch(getTokenRequest)
       .then(function (response) {
         return response.json();
@@ -91,7 +89,7 @@
   const getCalendarEvents = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
   getEvents.onclick = function () {
-    const { access_token } = JSON.parse(accessTokenElement.innerText);
+    const {access_token} = JSON.parse(accessTokenElement.innerText);
     const eventRequest = getCalendarEvents + "/" + access_token;
     fetch(eventRequest)
       .then(function (response) {

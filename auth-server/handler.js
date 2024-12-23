@@ -1,9 +1,9 @@
 'use strict';
 
-const { google } = require("googleapis");
+const {google} = require("googleapis");
 const calendar = google.calendar("v3");
 const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"];
-const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
+const {CLIENT_SECRET, CLIENT_ID, CALENDAR_ID} = process.env;
 const redirect_uris = [
   "https://meet-gray-one.vercel.app"
 ];
@@ -15,13 +15,14 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 
 module.exports.getAuthURL = async () => {
-  /**
-   * Scopes array is passed to the `scope` option.
-   */
+  console.log("Generating the authentication URL...");
+
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
   });
+
+  console.log("Authentication URL generated successfully:", authUrl);
 
   return {
     statusCode: 200,
@@ -36,6 +37,8 @@ module.exports.getAuthURL = async () => {
 };
 
 module.exports.getAccessToken = async (event) => {
+  console.log("Getting access token...");
+
   // Decode authorization code extracted from the URL query
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
@@ -53,7 +56,6 @@ module.exports.getAccessToken = async (event) => {
     });
   })
     .then((results) => {
-      // Respond with OAuth token
       return {
         statusCode: 200,
         headers: {
@@ -64,7 +66,6 @@ module.exports.getAccessToken = async (event) => {
       };
     })
     .catch((error) => {
-      // Handle error
       return {
         statusCode: 500,
         headers: {
@@ -77,6 +78,8 @@ module.exports.getAccessToken = async (event) => {
 };
 
 module.exports.getCalendarEvents = async (event) => {
+  console.log("Getting calendar events...");
+
   const access_token =
     decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({access_token});
@@ -100,7 +103,6 @@ module.exports.getCalendarEvents = async (event) => {
     );
   })
     .then((results) => {
-      // Respond with OAuth token
       return {
         statusCode: 200,
         headers: {
@@ -111,7 +113,6 @@ module.exports.getCalendarEvents = async (event) => {
       };
     })
     .catch((error) => {
-      // Handle error
       return {
         statusCode: 500,
         headers: {
