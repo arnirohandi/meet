@@ -24,8 +24,6 @@ const Event = ({event}) => {
         })}
       </p>
 
-      <p id="desc" className="event-description">{event.description}</p>
-
       {/* Details section */}
       {showDetails ? (
         <div className="event-details">
