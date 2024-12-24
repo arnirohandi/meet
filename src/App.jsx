@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css'
+import EventList from "./components/EventList.jsx";
+import CitySearch from "./components/CitySearch.jsx";
 
 const App = () => {
   return (
     <div className="App">
-      <div id="event-list"></div>
+      <CitySearch />
+      <EventList />
     </div>
   );
 }
