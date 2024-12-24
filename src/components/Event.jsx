@@ -1,8 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const Event = () => {
+const Event = ({event}) => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails)
+  };
+
   return (
-    <li></li>
+    <li className="event">
+      {/* Event title */}
+      <h2 className="event-title">{event.summary}</h2>
+
+      {/* Event location */}
+      <p className="event-location">{event.location}</p>
+
+      {/* Event date and time */}
+      <p className="event-time">
+        {new Date(event.start.dateTime).toLocaleString('en-GB', {
+          dateStyle: 'medium',
+          timeStyle: 'short',
+          timeZone: event.start.timeZone,
+        })}
+      </p>
+
+      <p id="desc" className="event-description">{event.description}</p>
+
+      {/* Details section */}
+      {showDetails ? (
+        <div className="event-details">
+          <p className="event-description">{event.description}</p>
+          <button onClick={toggleDetails}>Hide Details</button>
+        </div>
+      ) : (
+        <button onClick={toggleDetails}>Show Details</button>
+      )}
+    </li>
   );
 }
 
