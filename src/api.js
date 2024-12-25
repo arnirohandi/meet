@@ -56,8 +56,11 @@ export const getEvents = async () => {
       debugger;
       console.log("Result: " + result);
       console.log("Result events: " + result.events);
+      const text = JSON.stringify(result.events, null, 2);
+      console.log("Result json: " + text);
       // if (result) {
-        return result.events;
+      //   return result.events;
+         return text;
       // } else return null;
     } catch (error) {
       console.error("Caught error: " + error);
@@ -65,6 +68,18 @@ export const getEvents = async () => {
     }
   }
 };
+// fetch(eventRequest)
+//   .then(function (response) {
+//     console.log("Response: " + response);
+//     return response.json();
+//   })
+//   .then(function (json) {
+//     debugger;
+//     console.log("Response then JSON: " + json);
+//     events.innerText = JSON.stringify(json, null, 2);
+//   });
+
+
 // https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/ya29.a0ARW5m76d602KWw-HThcvKSFzhK1IP9iIsEFvJY_sXUA1gWDjqjFhA_dc4H0cDy7BkgLf9_Qgf6sGe6IwtsN9_xRk3ofn3TSblzNceH3Y39wGSej67bdW67PkumlTAMQfBp6glyLmSG1WImvMoL6FEyNn196PwPm-7W0aCgYKAdESARESFQHGX2Mi0ysVjMQUplSps0dRLV57mA0170
 
 export const getAccessToken = async () => {
