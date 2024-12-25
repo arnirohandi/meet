@@ -47,7 +47,7 @@ export const getEvents = async () => {
   console.log("Token: " + token);
 
   if (token) {
-    removeQuery();
+    // removeQuery();
     const url = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     console.log("Complete URL: " + url);
     try {
@@ -64,6 +64,7 @@ export const getEvents = async () => {
     }
   }
 };
+// https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/ya29.a0ARW5m76d602KWw-HThcvKSFzhK1IP9iIsEFvJY_sXUA1gWDjqjFhA_dc4H0cDy7BkgLf9_Qgf6sGe6IwtsN9_xRk3ofn3TSblzNceH3Y39wGSej67bdW67PkumlTAMQfBp6glyLmSG1WImvMoL6FEyNn196PwPm-7W0aCgYKAdESARESFQHGX2Mi0ysVjMQUplSps0dRLV57mA0170
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
