@@ -28,10 +28,10 @@ const Event = ({event}) => {
       {showDetails ? (
         <div className="event-details">
           <p className="event-description">{event.description}</p>
-          <button onClick={toggleDetails}>Hide Details</button>
+          <button data-testid="toggle-btn" onClick={toggleDetails}>Hide Details</button>
         </div>
       ) : (
-        <button onClick={toggleDetails}>Show Details</button>
+        <button data-testid="toggle-btn" onClick={toggleDetails}>Show Details</button>
       )}
     </li>
   );
