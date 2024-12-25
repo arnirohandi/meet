@@ -47,40 +47,21 @@ export const getEvents = async () => {
   console.log("Token: " + token);
 
   if (token) {
-    // removeQuery();
+    removeQuery();
     const url = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     console.log("Complete URL: " + url);
     try {
       const response = await fetch(url);
       const result = await response.json();
-      debugger;
-      console.log("Result: " + result);
-      console.log("Result events: " + result.data.items);
-      const text = JSON.stringify(result.data.items, null, 2);
-      console.log("Result json: " + text);
-      // if (result) {
+      if (result) {
         return result.data.items;
-      //    return text;
-      // } else return null;
+      } else return null;
     } catch (error) {
       console.error("Caught error: " + error);
       return null;
     }
   }
 };
-// fetch(eventRequest)
-//   .then(function (response) {
-//     console.log("Response: " + response);
-//     return response.json();
-//   })
-//   .then(function (json) {
-//     debugger;
-//     console.log("Response then JSON: " + json);
-//     events.innerText = JSON.stringify(json, null, 2);
-//   });
-
-
-// https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/ya29.a0ARW5m76d602KWw-HThcvKSFzhK1IP9iIsEFvJY_sXUA1gWDjqjFhA_dc4H0cDy7BkgLf9_Qgf6sGe6IwtsN9_xRk3ofn3TSblzNceH3Y39wGSej67bdW67PkumlTAMQfBp6glyLmSG1WImvMoL6FEyNn196PwPm-7W0aCgYKAdESARESFQHGX2Mi0ysVjMQUplSps0dRLV57mA0170
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');

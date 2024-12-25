@@ -1,5 +1,5 @@
 import React from 'react';
-import {useEffect, useState, act} from 'react';
+import {useEffect, useState} from 'react';
 import './App.css'
 import EventList from "./components/EventList.jsx";
 import CitySearch from "./components/CitySearch.jsx";
@@ -18,8 +18,6 @@ const App = () => {
 
   const fetchData = async () => {
     const allEvents = await getEvents();
-    debugger;
-    console.log("All events: " + allEvents);
     const filteredEvents = currentCity === "See all cities" ?
       allEvents :
       allEvents.filter(event => event.location === currentCity)
