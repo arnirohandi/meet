@@ -35,7 +35,7 @@ defineFeature(feature, test => {
 
     let AppDOM;
     let EventListDOM;
-    when(/^user clicks on the "(.*)" button$/, async (arg0) => {
+    when(/^user clicks on the "(.*)" button$/, async () => {
       AppDOM = AppComponent.container.firstChild;
       EventListDOM = AppDOM.querySelector('#event-list');
       const user = userEvent.setup();
@@ -66,7 +66,7 @@ defineFeature(feature, test => {
       await user.click(ShowDetailsButton);
     });
 
-    when(/^user clicks on the "(.*)" button$/, async (arg0) => {
+    when(/^user clicks on the "(.*)" button$/, async () => {
       const user = userEvent.setup();
       const HideDetailsButton = EventListItems[0].querySelector('[data-testid="toggle-btn"]');
       await user.click(HideDetailsButton);

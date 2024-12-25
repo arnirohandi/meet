@@ -17,7 +17,7 @@ defineFeature(feature, test => {
       AppComponent = render(<App/>);
     });
 
-    then(/^user will see (\d+) events by default$/, async (arg0) => {
+    then(/^user will see (\d+) events by default$/, async () => {
       const AppDOM = AppComponent.container.firstChild;
       const EventListDOM = AppDOM.querySelector('#event-list');
 

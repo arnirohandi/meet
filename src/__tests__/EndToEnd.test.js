@@ -8,8 +8,8 @@ describe('filter events by city', () => {
   let page;
   beforeAll(async () => {
     browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 100
+      // headless: false,
+      // slowMo: 100
     });
     page = await browser.newPage();
     await page.goto('http://localhost:5173/');
