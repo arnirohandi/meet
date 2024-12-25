@@ -55,8 +55,8 @@ export const getEvents = async () => {
       const result = await response.json();
       debugger;
       console.log("Result: " + result);
-      console.log("Result events: " + result.events);
-      const text = JSON.stringify(result.events, null, 2);
+      console.log("Result events: " + result.items);
+      const text = JSON.stringify(result.items, null, 2);
       console.log("Result json: " + text);
       // if (result) {
       //   return result.events;
