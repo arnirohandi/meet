@@ -3,7 +3,6 @@ import {render, waitFor, within} from '@testing-library/react';
 import NumberOfEvents from './../components/NumberOfEvents';
 import userEvent from '@testing-library/user-event';
 import App from "../App.jsx";
-import CitySearch from "../components/CitySearch.jsx";
 
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsComponent;
