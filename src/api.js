@@ -53,12 +53,12 @@ export const getEvents = async () => {
     try {
       const response = await fetch(url);
       const result = await response.json();
-      // debugger;
+      debugger;
       console.log("Result: " + result);
       console.log("Result events: " + result.events);
-      if (result) {
+      // if (result) {
         return result.events;
-      } else return null;
+      // } else return null;
     } catch (error) {
       console.error("Caught error: " + error);
       return null;
