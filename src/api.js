@@ -2,11 +2,11 @@ import mockData from './mock-data';
 
 /**
  *
- * @param {*} events:
  * The following function should be in the “api.js” file.
  * This function takes an events array, then uses map to create a new array with only locations.
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
+ * @param events
  */
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
@@ -52,6 +52,7 @@ export const getEvents = async () => {
     const response = await fetch(url);
     const result = await response.json();
     console.log("Result: " + result);
+    console.log("Result events: " + result.events);
     if (result) {
       return result.events;
     } else return null;
@@ -84,11 +85,12 @@ const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
 
-    const response = await fetch( 'https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode);
+    const response = await fetch('https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      // throw new Error(`HTTP error! status: ${response.status}`)
+      console.error(`HTTP error! status: ${response.status}`)
     }
-    const { access_token } = await response.json();
+    const {access_token} = await response.json();
     access_token && localStorage.setItem("access_token", access_token);
     return access_token;
   } catch (error) {
