@@ -49,13 +49,19 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-    const response = await fetch(url);
-    const result = await response.json();
-    console.log("Result: " + result);
-    console.log("Result events: " + result.events);
-    if (result) {
-      return result.events;
-    } else return null;
+    console.log("Complete URL: " + url);
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      console.log("Result: " + result);
+      console.log("Result events: " + result.events);
+      if (result) {
+        return result.events;
+      } else return null;
+    } catch (error) {
+      console.error("Caught error: " + error);
+      return null;
+    }
   }
 };
 
