@@ -1,4 +1,4 @@
-import mockData from './mock-data';
+import mockData from './mock-data-complete';
 
 /**
  *
@@ -40,7 +40,7 @@ const removeQuery = () => {
  */
 export const getEvents = async () => {
   if (window.location.href.startsWith('http://localhost')) {
-    return mockData;
+    return mockData.data.items;
   }
 
   const token = await getAccessToken();
@@ -55,12 +55,12 @@ export const getEvents = async () => {
       const result = await response.json();
       debugger;
       console.log("Result: " + result);
-      console.log("Result events: " + result.items);
-      const text = JSON.stringify(result.items, null, 2);
+      console.log("Result events: " + result.data.items);
+      const text = JSON.stringify(result.data.items, null, 2);
       console.log("Result json: " + text);
       // if (result) {
-      //   return result.events;
-         return text;
+        return result.data.items;
+      //    return text;
       // } else return null;
     } catch (error) {
       console.error("Caught error: " + error);
