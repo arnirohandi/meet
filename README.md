@@ -69,7 +69,7 @@ So that I can learn more about the event.
 
 ##### Gherkin
 **Given** an event had been collapsed  
-**When** user clicks on the event  
+**When** user clicks on the "Show Details" button  
 **Then** user will see the event expand to show its details
 
 
@@ -81,7 +81,7 @@ So that I can minimize the information when I no longer need it.
 
 ##### Gherkin
 **Given** an event had been expanded  
-**When** user clicks on the event again  
+**When** user clicks on the "Hide Details" button  
 **Then** user will see the event collapse to hide its details
 
 ---

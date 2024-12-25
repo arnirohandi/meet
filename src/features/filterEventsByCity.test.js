@@ -26,7 +26,6 @@ defineFeature(feature, test => {
         const EventListItems = within(EventListDOM).queryAllByRole('listitem');
         expect(EventListItems.length).toBe(32);
       });
-
     });
   });
 
