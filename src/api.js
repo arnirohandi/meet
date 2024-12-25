@@ -44,12 +44,14 @@ export const getEvents = async () => {
   }
 
   const token = await getAccessToken();
+  console.log("Token: " + token);
 
   if (token) {
     removeQuery();
     const url = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
+    console.log("Result: " + result);
     if (result) {
       return result.events;
     } else return null;

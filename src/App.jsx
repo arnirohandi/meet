@@ -4,7 +4,6 @@ import './App.css'
 import EventList from "./components/EventList.jsx";
 import CitySearch from "./components/CitySearch.jsx";
 import NumberOfEvents from "./components/NumberOfEvents.jsx";
-import mockData from './mock-data';
 import {extractLocations, getEvents} from "./api.js";
 
 const App = () => {
@@ -19,6 +18,7 @@ const App = () => {
 
   const fetchData = async () => {
     const allEvents = await getEvents();
+    console.log("All events: " + allEvents);
     const filteredEvents = currentCity === "See all cities" ?
       allEvents :
       allEvents.filter(event => event.location === currentCity)
@@ -30,8 +30,6 @@ const App = () => {
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents/>
-      {/*Test only*/}
-      {/*<EventList events={mockData}/>*/}
       <EventList events={events}/>
     </div>
   );
