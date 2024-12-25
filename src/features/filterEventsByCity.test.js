@@ -3,7 +3,7 @@ import React from "react";
 import App from "../App";
 import {render, waitFor, within} from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-import { getEvents } from '../api.js';
+import {getEvents} from '../api.js';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
@@ -56,7 +56,7 @@ defineFeature(feature, test => {
     let CitySearchDOM;
     let citySearchInput;
     given('user was typing "Berlin" in the city textbox', async () => {
-      AppComponent = render(<App />);
+      AppComponent = render(<App/>);
       const user = userEvent.setup();
       AppDOM = AppComponent.container.firstChild;
       CitySearchDOM = AppDOM.querySelector('#city-search');
