@@ -2,6 +2,7 @@ import {defineFeature, loadFeature} from "jest-cucumber";
 import {render, waitFor, within} from "@testing-library/react";
 import App from "../App.jsx";
 import React from "react";
+import userEvent from '@testing-library/user-event';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
@@ -67,30 +68,53 @@ defineFeature(feature, test => {
   });
 
   test('User can expand an event to see details.', ({given, when, then}) => {
+    let AppComponent;
     given('an event had been collapsed', () => {
-
+      AppComponent = render(<App/>);
     });
 
-    when(/^user clicks on the "(.*)" button$/, (arg0) => {
-
+    let AppDOM;
+    let EventListDOM;
+    when(/^user clicks on the "(.*)" button$/, async (arg0) => {
+      AppDOM = AppComponent.container.firstChild;
+      EventListDOM = AppDOM.querySelector('#event-list');
+      const user = userEvent.setup();
+      const EventListItems = await within(EventListDOM).findAllByRole('listitem');
+      const ShowDetailsButton = EventListItems[0].querySelector('[data-testid="toggle-btn"]');
+      await user.click(ShowDetailsButton);
     });
 
-    then('user will see the event expand to show its details', () => {
-
+    then('user will see the event expand to show its details', async () => {
+      const EventListItems = await within(EventListDOM).findAllByRole('listitem');
+      const Details = EventListItems[0].querySelector('.event-details');
+      expect(Details).toBeInTheDocument();
     });
   });
 
   test('User can collapse an event to hide details.', ({given, when, then}) => {
-    given('an event had been expanded', () => {
-
+    let AppComponent;
+    let AppDOM;
+    let EventListDOM;
+    let EventListItems
+    given('an event had been expanded', async () => {
+      AppComponent = render(<App/>);
+      AppDOM = AppComponent.container.firstChild;
+      EventListDOM = AppDOM.querySelector('#event-list');
+      const user = userEvent.setup();
+      EventListItems = await within(EventListDOM).findAllByRole('listitem');
+      const ShowDetailsButton = EventListItems[0].querySelector('[data-testid="toggle-btn"]');
+      await user.click(ShowDetailsButton);
     });
 
-    when(/^user clicks on the "(.*)" button$/, (arg0) => {
-
+    when(/^user clicks on the "(.*)" button$/, async (arg0) => {
+      const user = userEvent.setup();
+      const HideDetailsButton = EventListItems[0].querySelector('[data-testid="toggle-btn"]');
+      await user.click(HideDetailsButton);
     });
 
-    then('user will see the event collapse to hide its details', () => {
-
+    then('user will see the event collapse to hide its details', async () => {
+      const Details = EventListItems[0].querySelector('.event-details');
+      expect(Details).not.toBeInTheDocument();
     });
   });
 });
