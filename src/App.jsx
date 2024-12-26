@@ -5,7 +5,7 @@ import EventList from "./components/EventList.jsx";
 import CitySearch from "./components/CitySearch.jsx";
 import NumberOfEvents from "./components/NumberOfEvents.jsx";
 import {extractLocations, getEvents} from "./api.js";
-import {InfoAlert,ErrorAlert} from './components/Alert';
+import {InfoAlert,ErrorAlert, WarningAlert} from './components/Alert';
 
 const App = () => {
   const [events, setEvents] = useState([]);
