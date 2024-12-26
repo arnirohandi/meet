@@ -27,8 +27,10 @@ describe('<NumberOfEvents /> component', () => {
 
   test('changes value according to the number typed by user', async () => {
 
-    NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={() => {
-    }}/>);
+    NumberOfEventsComponent.rerender(<NumberOfEvents
+      setCurrentNOE={() => { }}
+      setErrorAlert={() => { }}
+    />);
 
     const numberOfEventsTextBox = NumberOfEventsComponent.queryByRole('textbox');
     const user = userEvent.setup();
