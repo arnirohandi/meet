@@ -43,22 +43,24 @@ export const getEvents = async () => {
     return mockData.data.items;
   }
 
+  console.log("Navigator online: " + navigator.onLine)
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
     return events ? JSON.parse(events) : [];
   }
 
   const token = await getAccessToken();
-  console.log("Token: " + token);
+  // console.log("Token: " + token);
 
   if (token) {
     removeQuery();
     const url = "https://34yjgoxhc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-    console.log("Complete URL: " + url);
+    // console.log("Complete URL: " + url);
     try {
       const response = await fetch(url);
       const result = await response.json();
       if (result) {
+        console.log("Saving events to localstorage")
         localStorage.setItem("lastEvents", JSON.stringify(result.data.items));
         return result.data.items;
       } else return null;
