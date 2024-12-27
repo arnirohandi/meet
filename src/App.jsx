@@ -4,8 +4,10 @@ import './App.css'
 import EventList from "./components/EventList.jsx";
 import CitySearch from "./components/CitySearch.jsx";
 import NumberOfEvents from "./components/NumberOfEvents.jsx";
+import CityEventsChart from "./components/CityEventsChart.jsx";
+import EventGenresChart from "./components/EventGenresChart.jsx";
 import {extractLocations, getEvents} from "./api.js";
-import {InfoAlert,ErrorAlert, WarningAlert} from './components/Alert';
+import {InfoAlert, ErrorAlert, WarningAlert} from './components/Alert';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -43,6 +45,10 @@ const App = () => {
       setCurrentCity={setCurrentCity}
       setInfoAlert={setInfoAlert}/>
     <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert}/>
+    <div className="charts-container">
+      <EventGenresChart events={events}/>
+      <CityEventsChart allLocations={allLocations} events={events}/>
+    </div>
     <EventList events={events}/>
   </div>);
 }

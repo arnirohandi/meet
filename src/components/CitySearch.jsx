@@ -36,6 +36,7 @@ const CitySearch = ({allLocations, setCurrentCity, setInfoAlert}) => {
 
   return (
     <div id="city-search">
+      <h1>Meet App</h1>
       <input
         type="text"
         className="city"
