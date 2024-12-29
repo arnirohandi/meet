@@ -28,7 +28,7 @@ const EventsGenresChart = ({events}) => {
       <text
         x={x}
         y={y}
-        fill="#8884d8"
+        fill="#696969"
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
       >
@@ -43,7 +43,7 @@ const EventsGenresChart = ({events}) => {
         <Pie
           data={data}
           dataKey="value"
-          fill="#8884d8"
+          fill="gray"
           labelLine={false}
           label={renderCustomizedLabel}
           outerRadius={130}

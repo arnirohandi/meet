@@ -21,7 +21,8 @@ const NumberOfEvents = ({ defaultValue = 32, onChange, setCurrentNOE, setErrorAl
 
   return (
     <div id="number-of-events">
-      <label htmlFor="event-count">Number of Events:</label>
+      <div classname="text-above">Number of Events: </div>
+      <label htmlFor="event-count" className="input-label"></label>
       <input
         type="number"
         id="event-count"
